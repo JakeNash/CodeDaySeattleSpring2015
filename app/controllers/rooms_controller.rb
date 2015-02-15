@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @floorplan = Floorplan.find(params[:floorplan_id]
+    @floorplan = Floorplan.find(params[:floorplan_id])
     @room = @floorplan.rooms.create(room_params)
     redirect_to room_path(@room)
     

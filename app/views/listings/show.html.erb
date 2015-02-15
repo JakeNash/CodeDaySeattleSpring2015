@@ -67,6 +67,15 @@
       <a type="button" class="btn btn-default" href=<%= link %>>
         <i class="fa fa-pencil fa-fw"></i> Add floor plan photos
       </a>
+
+      <% floorplan.rooms.each do |room| %>
+      
+        <% link = room_url(room.id) %>
+        <a type="button" class="btn btn-default" href=<%= link %>>
+          <i class="fa fa-camera-retro fa-lg"></i> <%= room.title %>
+        </a>
+
+      <% end %>
     </div>
   </div>
 </div>
