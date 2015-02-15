@@ -1,0 +1,27 @@
+<div class="form-group">
+  <%= f.label :title, :class => 'col-sm-2 control-label' %>
+  <div class="col-sm-2">
+    <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :is_bed, :class => 'col-sm-2 control-label' %>
+  <div class="col-sm-2">
+    <%= f.check_box :is_bed, :class => 'form-control' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :is_bath, :class => 'col-sm-2 control-label' %>
+  <div class="col-sm-2">
+    <%= f.check_box :is_bath, :class => 'form-control' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :photo_one, :class => 'col-sm-2 control-label' %>
+  <div class="col-sm-2">
+    <%= f.file_field :photo_one %>
+  </div>
+</div>

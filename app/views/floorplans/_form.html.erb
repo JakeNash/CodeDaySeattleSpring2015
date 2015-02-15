@@ -36,6 +36,17 @@
     </div>
   </div>
 
+  <h2>Rooms</h2>
+  <hr />
+
+  <% 10.times do -%>
+    <div class="control-group">
+      <%= f.fields_for :rooms do |room_form| -%>
+        <%= render partial: "room_fields", locals: {f: room_form} %>
+      <% end -%>
+    </div>
+  <% end -%>
+  
   <%= f.submit nil, method: :patch, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             listings_path, :class => 'btn btn-default' %>

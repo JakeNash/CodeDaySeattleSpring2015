@@ -15,6 +15,7 @@ class FloorplansController < ApplicationController
   # GET /floorplans/new
   def new
     @floorplan = Floorplan.new
+    @floorplan.rooms.build
   end
 
   # GET /floorplans/1/edit
@@ -75,6 +76,6 @@ class FloorplansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def floorplan_params
-      params.require(:floorplan).permit(:title, :description, :num_bed, :num_bath, :photo)
+      params.require(:floorplan).permit(:title, :description, :num_bed, :num_bath, :photo, rooms_attributes: [:title, :photo_one, :photo_two, :photo_three, :photo_four, :is_bed, :is_bath, :_destroy])
     end
 end

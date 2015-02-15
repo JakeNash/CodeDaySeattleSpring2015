@@ -24,8 +24,10 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(room_params)
-
+    @floorplan = Floorplan.find(params[:floorplan_id]
+    @room = @floorplan.rooms.create(room_params)
+    redirect_to room_path(@room)
+    
     respond_to do |format|
       if @room.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
@@ -69,6 +71,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:title)
+      params.require(:room).permit(:title, :photo_one, :photo_two, :photo_three, :photo_four, :is_bed, :is_bath)
     end
 end
