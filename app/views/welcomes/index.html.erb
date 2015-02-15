@@ -14,16 +14,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeK3xnM83FC-YocquU4VY13iEqXRiVdpw"></script>
     <script>
       window.onload = function() {
-        var listings = document.getElementById("listings");
-        var data = document.getElementById("listings").getAttribute("data-url");
-        var derulo = JSON.parse(data);
-        var list = document.createElement("ul");
-        for (i = 0; i < derulo.length; i++) {
-          var li = document.createElement("li");
-          li.innerHTML = derulo[i].title;
-          list.appendChild(li);
-        }
-        listings.appendChild(list);
+        
       };
 
       function initialize() {
@@ -32,6 +23,23 @@
           zoom: 10
         };
         var map = new google.maps.Map(document.getElementById('map-area'), mapOptions);
+
+        var data = document.getElementById("listings").getAttribute("data-url");
+        var derulo = JSON.parse(data);
+
+        for (i = 0; i < derulo.length; i++) {
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(derulo[i].lat,derulo[i].long),
+            map: map,
+            title: derulo[i].title
+          });
+          var url = "listings/";
+          var id = derulo[i].id.toString();
+          url += id;
+          google.maps.event.addListener(marker, 'click', function() {            
+            window.location.replace(url);
+          });
+        }
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
@@ -41,7 +49,6 @@
 
 <body>
   <div id="map-area"></div>
-  <h1>Listings</h1>
   <%= content_tag "div", id: "listings", data: {url: Listing.limit(10) } do %>
   <% end %>
 </body>

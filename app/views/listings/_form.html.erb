@@ -18,7 +18,7 @@
   <div class="form-group">
     <%= f.label "Street Address", :class => 'col-sm-2 control-label' %>
     <div class="col-sm-2">
-      <%= f.text_field :address, :class => 'form-control' %>
+      <%= f.text_field :address, :class => 'form-control', :id => 'address' %>
     </div>
     <%= error_span(@listing[:address]) %>
   </div>
@@ -26,9 +26,19 @@
   <div class="form-group">
     <%= f.label "Zipcode", :class => 'col-sm-2 control-label' %>
     <div class="col-sm-2">
-      <%= f.number_field :zip, :class => 'form-control' %>
+      <%= f.number_field :zip, :class => 'form-control', :id => 'zip' %>
     </div>
     <%= error_span(@listing[:zip]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Lat / Long", :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.number_field :lat, :class => 'form-control', :id => 'lat', :step => 'any' %>
+      <%= f.number_field :long, :class => 'form-control', :id => 'long', :step => 'any' %>
+    </div>
+    <%= error_span(@listing[:lat]) %>
+    <%= error_span(@listing[:long]) %>
   </div>
 
   <div class="form-group">
@@ -68,3 +78,25 @@
 
 
 <% end %>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeK3xnM83FC-YocquU4VY13iEqXRiVdpw"></script>
+<script>
+  window.onload = function() {
+    var zipField = document.getElementById("zip");
+    zipField.onchange = function() {
+      var geocoder = new google.maps.Geocoder();
+      var address = document.getElementById("address");
+      var search = address.value.concat(" ").concat(zipField.value.toString());
+        geocoder.geocode( { 'address': search}, function(results, status){
+          if (status == google.maps.GeocoderStatus.OK) {
+            document.getElementById("lat").value = results[0].geometry.location.k;
+            document.getElementById("long").value = results[0].geometry.location.D;
+            // map.setCenter(results[0].geometry.location);
+            // var marker = new google.maps.Marker({map: map, position: results[0].geometry.location });
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+    });
+    }
+  };
+</script>
