@@ -6,6 +6,6 @@ class Listing < ActiveRecord::Base
 #  validates :main_photo, :attachment_presence => true
 #  validates_with AttachmentPresenceValidator, :attributes => :main_photo
 
-  has_many :floorplans
-
+  has_many :floorplans, :dependent => :destroy
+  accepts_nested_attributes_for :floorplans, :allow_destroy => true
 end
