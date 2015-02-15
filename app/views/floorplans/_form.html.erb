@@ -39,7 +39,7 @@
   <h2>Rooms</h2>
   <hr />
 
-  <% 10.times do -%>
+  <% 6.times do -%>
     <div class="control-group">
       <%= f.fields_for :rooms do |room_form| -%>
         <%= render partial: "room_fields", locals: {f: room_form} %>
