@@ -35,7 +35,11 @@
       <%= f.file_field :main_photo %>
     </div>
   </div>
-
+  <div class="control-group">
+    <%= f.fields_for :floorplans do |floorplan_form| -%>
+      <%= render partial: "floorplan_fields", locals: {f: floorplan_form} %>
+    <% end -%>
+  </div>
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

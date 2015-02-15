@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215040020) do
+ActiveRecord::Schema.define(version: 20150215040644) do
 
   create_table "floorplans", force: :cascade do |t|
     t.string   "title"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20150215040020) do
     t.string   "photo_four_content_type"
     t.integer  "photo_four_file_size"
     t.datetime "photo_four_updated_at"
+    t.boolean  "is_bed"
+    t.boolean  "is_bath"
   end
 
   add_index "rooms", ["floorplan_id"], name: "index_rooms_on_floorplan_id"
