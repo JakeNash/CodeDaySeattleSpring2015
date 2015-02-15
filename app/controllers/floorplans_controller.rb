@@ -15,11 +15,12 @@ class FloorplansController < ApplicationController
   # GET /floorplans/new
   def new
     @floorplan = Floorplan.new
-    @floorplan.rooms.build
   end
 
   # GET /floorplans/1/edit
   def edit
+    @floorplan = Floorplan.find(params[:listing_id])
+    room = @floorplan.rooms.build
   end
 
   # POST /floorplans
