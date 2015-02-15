@@ -1,14 +1,29 @@
+
+
 <%- model_class = Listing -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @listing.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @listing.description %></dd>
-</dl>
+<div id="main-container" class="container">
+  <div class="row">
+
+    <div class="col-xs-7">
+      <%= image_tag "main_photo.jpg", height:"500", width:"750" %>
+    </div>
+    
+    <div class="col-xs-3">
+      <dl class="dl-horizontal">
+	<dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+	<dd><%= @listing.title %></dd>
+	<dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+	<dd><%= @listing.description %></dd>
+      </dl>
+    </div>
+
+
+  </div>
+</div>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               listings_path, :class => 'btn btn-default'  %>
