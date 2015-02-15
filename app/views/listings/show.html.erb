@@ -32,33 +32,36 @@
               listings_path, :class => 'btn btn-default'  %>
 
 <h2>Floorplans</h2>
+<hr />
 <% @listing.floorplans.each do |floorplan| %>
 <div id="main-container" class="container">
   <div class="row">
     <div class="col-xs-7">
-
       <p>
-	<strong>Title:</strong>
-	<%= floorplan.title %>
+	       <strong>Title:</strong>
+	       <%= floorplan.title %>
       </p>
       
       <p>
-	<strong>Photo of Floorplan:</strong>
-	<%= image_tag floorplan.photo.url(:medium) %>
+	       <%= image_tag floorplan.photo.url(:medium) %>
       </p>
     </div>
+
     <div class="col-xs-3">
       <p>
-	<strong>Number of Bedrooms:</strong>
-	<%= floorplan.num_bed %>
+	       <strong>Number of Bedrooms:</strong>
+	       <%= floorplan.num_bed %>
       </p>
       
       <p>
-	<strong>Number of Bathrooms:</strong>
-	<%= floorplan.num_bath %>
+        	<strong>Number of Bathrooms:</strong>
+        	<%= floorplan.num_bath %>
       </p>
 
-      <%= link_to "Show", listing_floorplan_url(@listing.id, floorplan.id)%>
+      <% link = listing_floorplan_url(@listing.id, floorplan.id) %>
+      <a type="button" class="btn btn-default" href=<%= link %>>
+        <i class="fa fa-camera-retro fa-lg"></i> Show
+      </a>
     </div>
   </div>
 </div>
