@@ -1,0 +1,10 @@
+class CreateFloorplans < ActiveRecord::Migration
+  def change
+    create_table :floorplans do |t|
+      t.string :title
+      t.text :description
+
+      t.timestamps null: false
+    end
+  end
+end

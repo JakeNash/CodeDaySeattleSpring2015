@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214235629) do
+ActiveRecord::Schema.define(version: 20150215022345) do
+
+  create_table "floorplans", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "listing_id"
+    t.integer  "num_bed"
+    t.integer  "num_bath"
+  end
+
+  add_index "floorplans", ["listing_id"], name: "index_floorplans_on_listing_id"
 
   create_table "listings", force: :cascade do |t|
     t.string   "title"
