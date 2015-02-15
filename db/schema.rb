@@ -11,16 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215022345) do
+ActiveRecord::Schema.define(version: 20150215040020) do
 
   create_table "floorplans", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "listing_id"
     t.integer  "num_bed"
     t.integer  "num_bath"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "floorplans", ["listing_id"], name: "index_floorplans_on_listing_id"
@@ -35,6 +39,31 @@ ActiveRecord::Schema.define(version: 20150215022345) do
     t.integer  "main_photo_file_size"
     t.datetime "main_photo_updated_at"
   end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "floorplan_id"
+    t.string   "photo_one_file_name"
+    t.string   "photo_one_content_type"
+    t.integer  "photo_one_file_size"
+    t.datetime "photo_one_updated_at"
+    t.string   "photo_two_file_name"
+    t.string   "photo_two_content_type"
+    t.integer  "photo_two_file_size"
+    t.datetime "photo_two_updated_at"
+    t.string   "photo_three_file_name"
+    t.string   "photo_three_content_type"
+    t.integer  "photo_three_file_size"
+    t.datetime "photo_three_updated_at"
+    t.string   "photo_four_file_name"
+    t.string   "photo_four_content_type"
+    t.integer  "photo_four_file_size"
+    t.datetime "photo_four_updated_at"
+  end
+
+  add_index "rooms", ["floorplan_id"], name: "index_rooms_on_floorplan_id"
 
   create_table "welcomes", force: :cascade do |t|
     t.datetime "created_at", null: false

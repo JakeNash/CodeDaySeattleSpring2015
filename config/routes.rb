@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :rooms
+
   resources :welcomes
 
   root 'welcomes#index'
