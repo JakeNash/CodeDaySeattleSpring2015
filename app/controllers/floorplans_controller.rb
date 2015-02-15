@@ -74,6 +74,6 @@ class FloorplansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def floorplan_params
-      params.require(:floorplan).permit(:title, :description)
+      params.require(:floorplan).permit(:title, :description, :num_bed, :num_bath, :photo)
     end
 end

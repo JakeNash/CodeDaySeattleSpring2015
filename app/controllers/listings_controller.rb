@@ -15,6 +15,8 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    floorplan = @listing.floorplans.build
+    floorplan.rooms.build
   end
 
   # GET /listings/1/edit
@@ -71,6 +73,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :main_photo)
+      params.require(:listing).permit(:title, :description, :main_photo, floorplans_attributes: [:title, :description, :num_bed, :num_bath, :photo, :_destroy])
     end
 end
