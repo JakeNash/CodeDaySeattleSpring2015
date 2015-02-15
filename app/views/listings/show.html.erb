@@ -68,10 +68,6 @@
         <i class="fa fa-pencil fa-fw"></i> Add floor plan photos
       </a>
 
-      <%= content_tag "div", id: "rooms", data: {url: Rooms.limit(10) } do %>
-      <script>
-      var data = document.getElementById("rooms").getAttribute("data-url");
-      </script>
       <% floorplan.rooms.each do |room| %>
       
         <% link = room_url(room.id) %>
@@ -84,7 +80,8 @@
   </div>
 </div>
   
-  <% end %>
+<% end %>
+
   
 <!--
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
