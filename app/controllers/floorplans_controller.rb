@@ -43,9 +43,10 @@ class FloorplansController < ApplicationController
   # PATCH/PUT /floorplans/1
   # PATCH/PUT /floorplans/1.json
   def update
+    @listing = Listing.find(params[:listing_id])
     respond_to do |format|
       if @floorplan.update(floorplan_params)
-        format.html { redirect_to @floorplan, notice: 'Floorplan was successfully updated.' }
+        format.html { redirect_to @listing, notice: 'Floorplan was successfully updated.' }
         format.json { render :show, status: :ok, location: @floorplan }
       else
         format.html { render :edit }

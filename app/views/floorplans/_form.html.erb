@@ -1,6 +1,6 @@
-<%= form_for @floorplan, :html => { :class => "form-horizontal floorplan" } do |f| %>
+<%= form_for @floorplan, :url => { :action => :update }, :html => { :class => "form-horizontal floorplan" } do |f| %>
 
-    <% if @floorplan.errors.any? %>
+  <% if @floorplan.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title"><%= pluralize(@floorplan.errors.count, "error") %> prohibited this floorplan from being saved:</h3>
@@ -15,24 +15,29 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
+  <div class="form-group">
+    <%= f.label :title, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
       <%= f.text_field :title, :class => 'form-control' %>
     </div>
-    <%= error_span(@floorplan[:title]) %>
   </div>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :description, :class => 'form-control' %>
+
+  <div class="form-group">
+    <%= f.label :num_bed, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.number_field :num_bed, :class => 'form-control' %>
     </div>
-    <%= error_span(@floorplan[:description]) %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :num_bath, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.number_field :num_bath, :class => 'form-control' %>
+    </div>
+  </div>
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= f.submit nil, method: :patch, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            floorplans_path, :class => 'btn btn-default' %>
+            listings_path, :class => 'btn btn-default' %>
 
 <% end %>
