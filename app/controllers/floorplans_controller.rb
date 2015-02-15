@@ -57,6 +57,8 @@ class FloorplansController < ApplicationController
   # DELETE /floorplans/1
   # DELETE /floorplans/1.json
   def destroy
+    @floorplan.photo = nil
+    @floorplan.save
     @floorplan.destroy
     respond_to do |format|
       format.html { redirect_to floorplans_url, notice: 'Floorplan was successfully destroyed.' }
