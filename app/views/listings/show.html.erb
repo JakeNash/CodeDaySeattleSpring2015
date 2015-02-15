@@ -9,7 +9,7 @@
   <div class="row">
 
     <div class="col-xs-7">
-      <%= image_tag "main_photo.jpg", height:"500", width:"750" %>
+      <%= image_tag @listing.main_photo.url(:medium) %>
     </div>
     
     <div class="col-xs-3">
@@ -18,7 +18,9 @@
 	<dd><%= @listing.title %></dd>
 	<dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
 	<dd><%= @listing.description %></dd>
+        
       </dl>
+
     </div>
 
 
@@ -27,6 +29,28 @@
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               listings_path, :class => 'btn btn-default'  %>
+
+<h2>Floorplans</h2>
+<% @listing.floorplans.each do |floorplan| %>
+<!--
+<p>
+    <strong>Photo of Floorplan:</strong>
+    <%= floorplan.photo %>
+  </p>
+-->
+  <p>
+    <strong>Number of Bedrooms:</strong>
+    <%= floorplan.num_bed %>
+  </p>
+ 
+  <p>
+    <strong>Number of Bathrooms:</strong>
+    <%= floorplan.num_bath %>
+  </p>
+  
+  <% end %>
+  
+<!--
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_listing_path(@listing), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -34,3 +58,4 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+-->

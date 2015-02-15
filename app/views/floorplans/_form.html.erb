@@ -1,13 +1,13 @@
-<%= form_for @listing, :url => listings_path, :html => { :multipart => true, :class => "form-horizontal listing" } do |f| %>
+<%= form_for @floorplan, :html => { :class => "form-horizontal floorplan" } do |f| %>
 
-    <% if @listing.errors.any? %>
+    <% if @floorplan.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h3>
+        <h3 class="panel-title"><%= pluralize(@floorplan.errors.count, "error") %> prohibited this floorplan from being saved:</h3>
       </div>
       <div class="panel-body">
         <ul>
-        <% @listing.errors.full_messages.each do |msg| %>
+        <% @floorplan.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -20,25 +20,19 @@
     <div class="controls">
       <%= f.text_field :title, :class => 'form-control' %>
     </div>
-    <%= error_span(@listing[:title]) %>
+    <%= error_span(@floorplan[:title]) %>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :description, :class => 'form-control' %>
     </div>
-    <%= error_span(@listing[:description]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :main_photo, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :main_photo %>
-    </div>
+    <%= error_span(@floorplan[:description]) %>
   </div>
 
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            listings_path, :class => 'btn btn-default' %>
+            floorplans_path, :class => 'btn btn-default' %>
 
 <% end %>
