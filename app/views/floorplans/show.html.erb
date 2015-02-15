@@ -27,21 +27,21 @@
       </div>
     </div>
     <% end %>
-    
-  </div>
- 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-</div> <!-- Carousel -->
 
-<p>
-  <%= link_to "Back", listing_path(@floorplan.listing.id) %>
-</p>
+    <style type="text/css">
+      #carousel-example-generic { margin-left: 30%; margin-right: 30%;}
+    </style>
+    
+  </div> 
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"></a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"></a>
+  </div> <!-- Carousel -->
+
+<% link = listing_path(@floorplan.listing.id) %>
+      <a type="button" class="btn btn-default" href=<%= link %>>
+        <i class="fa fa-arrow-left"></i> Back
+      </a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
