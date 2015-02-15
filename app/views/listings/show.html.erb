@@ -32,21 +32,35 @@
 
 <h2>Floorplans</h2>
 <% @listing.floorplans.each do |floorplan| %>
-<!--
-<p>
-    <strong>Photo of Floorplan:</strong>
-    <%= floorplan.photo %>
-  </p>
--->
-  <p>
-    <strong>Number of Bedrooms:</strong>
-    <%= floorplan.num_bed %>
-  </p>
- 
-  <p>
-    <strong>Number of Bathrooms:</strong>
-    <%= floorplan.num_bath %>
-  </p>
+<div id="main-container" class="container">
+  <div class="row">
+    <div class="col-xs-7">
+
+      <p>
+	<strong>Title:</strong>
+	<%= floorplan.title %>
+      </p>
+      
+      <p>
+	<strong>Photo of Floorplan:</strong>
+	<%= image_tag floorplan.photo.url(:medium) %>
+      </p>
+    </div>
+    <div class="col-xs-3">
+      <p>
+	<strong>Number of Bedrooms:</strong>
+	<%= floorplan.num_bed %>
+      </p>
+      
+      <p>
+	<strong>Number of Bathrooms:</strong>
+	<%= floorplan.num_bath %>
+      </p>
+
+      <%= link_to "Show", listing_floorplan_url(@listing.id, floorplan.id)%>
+    </div>
+  </div>
+</div>
   
   <% end %>
   
