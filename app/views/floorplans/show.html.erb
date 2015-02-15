@@ -16,14 +16,14 @@
     <div class="item active">
       <%= image_tag @floorplan.photo.url(:medium) %>
       <div class="carousel-caption">
-          <h3>Caption Text</h3>
+          <h3><%= @floorplan.title %></h3>
       </div>
     </div>
     <% @floorplan.rooms.each do |room| %>
     <div class="item">
       <%= image_tag room.photo_one.url(:medium) %>
       <div class="carousel-caption">
-          <h3>Caption Text</h3>
+          <h3><%= room.title %></h3>
       </div>
     </div>
     <% end %>
