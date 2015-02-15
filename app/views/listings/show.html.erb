@@ -72,6 +72,14 @@
       <script>
       var data = document.getElementById("rooms").getAttribute("data-url");
       </script>
+      <% floorplan.rooms.each do |room| %>
+      
+        <% link = room_url(room.id) %>
+        <a type="button" class="btn btn-default" href=<%= link %>>
+          <i class="fa fa-camera-retro fa-lg"></i> <%= room.title %>
+        </a>
+
+      <% end %>
     </div>
   </div>
 </div>
