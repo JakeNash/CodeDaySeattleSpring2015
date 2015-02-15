@@ -63,9 +63,10 @@
         <i class="fa fa-camera-retro fa-lg"></i> Show
       </a>
 
-      <p>
-        <%= link_to "To Add Photos For Each Room Click Here", edit_listing_floorplan_url(@listing.id, floorplan.id)%>
-      </p>
+      <% link = edit_listing_floorplan_url(@listing.id, floorplan.id) %>
+      <a type="button" class="btn btn-default" href=<%= link %>>
+        <i class="fa fa-camera-retro fa-lg"></i> Add floor plan photos
+      </a>
     </div>
   </div>
 </div>
