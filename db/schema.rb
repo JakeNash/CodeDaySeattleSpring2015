@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215040644) do
+ActiveRecord::Schema.define(version: 20150215065610) do
 
   create_table "floorplans", force: :cascade do |t|
     t.string   "title"
@@ -30,14 +30,15 @@ ActiveRecord::Schema.define(version: 20150215040644) do
   add_index "floorplans", ["listing_id"], name: "index_floorplans_on_listing_id"
 
   create_table "listings", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "main_photo_file_name"
     t.string   "main_photo_content_type"
     t.integer  "main_photo_file_size"
     t.datetime "main_photo_updated_at"
+    t.text     "address"
+    t.integer  "price"
+    t.integer  "zip"
   end
 
   create_table "rooms", force: :cascade do |t|
