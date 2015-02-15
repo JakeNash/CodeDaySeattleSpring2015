@@ -19,7 +19,7 @@ class FloorplansController < ApplicationController
 
   # GET /floorplans/1/edit
   def edit
-    @floorplan = Floorplan.find(params[:listing_id])
+    @floorplan = Floorplan.find(params[:id])
     room = @floorplan.rooms.build
   end
 
