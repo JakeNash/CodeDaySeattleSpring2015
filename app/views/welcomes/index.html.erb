@@ -12,8 +12,20 @@
     </style>
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeK3xnM83FC-YocquU4VY13iEqXRiVdpw"></script>
-    
-    <script type="text/javascript">
+    <script>
+      window.onload = function() {
+        var listings = document.getElementById("listings");
+        var data = document.getElementById("listings").getAttribute("data-url");
+        var derulo = JSON.parse(data);
+        var list = document.createElement("ul");
+        for (i = 0; i < derulo.length; i++) {
+          var li = document.createElement("li");
+          li.innerHTML = derulo[i].title;
+          list.appendChild(li);
+        }
+        listings.appendChild(list);
+      };
+
       function initialize() {
         var mapOptions = {
           center: { lat: 47.6097, lng: -122.3331},
@@ -23,11 +35,15 @@
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
+
     </script>
 </head>
 
 <body>
   <div id="map-area"></div>
+  <h1>Listings</h1>
+  <%= content_tag "div", id: "listings", data: {url: Listing.limit(10) } do %>
+  <% end %>
 </body>
 
 <!--
